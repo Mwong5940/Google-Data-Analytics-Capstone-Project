@@ -1,0 +1,330 @@
+/* Import Data */
+
+-- Create database
+CREATE SCHEMA cyclistic;
+USE cyclistic;
+
+-- Create and load tables for each month
+CREATE TABLE apr21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202104-divvy-tripdata.csv'
+INTO TABLE apr21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE may21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202105-divvy-tripdata.csv'
+INTO TABLE may21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE jun21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202106-divvy-tripdata.csv'
+INTO TABLE jun21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE jul21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202107-divvy-tripdata.csv'
+INTO TABLE jul21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE aug21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202108-divvy-tripdata.csv'
+INTO TABLE aug21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE sep21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202109-divvy-tripdata.csv'
+INTO TABLE sep21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE oct21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202110-divvy-tripdata.csv'
+INTO TABLE oct21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE nov21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202111-divvy-tripdata.csv'
+INTO TABLE nov21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE dec21 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202112-divvy-tripdata.csv'
+INTO TABLE dec21
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE jan22 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202201-divvy-tripdata.csv'
+INTO TABLE jan22
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE feb22 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202202-divvy-tripdata.csv'
+INTO TABLE feb22
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE mar22 (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+    
+LOAD DATA LOCAL INFILE 'C:/Users/mwong/Desktop/Cyclistic/202203-divvy-tripdata.csv'
+INTO TABLE mar22
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS; 
+
+CREATE TABLE total_year (
+	ride_id varchar(255),
+    rideable_type varchar(255),
+    started_at datetime,
+    ended_at datetime,
+    start_station_name varchar(255),
+    start_station_id double,
+    end_station_name varchar(255),
+    end_station_id double,
+    start_lat float,
+    start_lng float,
+    end_lat float,
+    end_lng float,
+    member_casual varchar(255));
+
+-- Merge all months together into one combined table "total_year"
+INSERT INTO total_year
+SELECT *
+FROM apr21
+UNION ALL
+SELECT *
+FROM may21
+UNION ALL
+SELECT *
+FROM jun21
+UNION ALL
+SELECT *
+FROM jul21
+UNION ALL
+SELECT *
+FROM aug21
+UNION ALL
+SELECT *
+FROM sep21
+UNION ALL
+SELECT *
+FROM oct21
+UNION ALL
+SELECT *
+FROM nov21
+UNION ALL
+SELECT *
+FROM dec21
+UNION ALL
+SELECT *
+FROM jan22
+UNION ALL
+SELECT *
+FROM feb22
+UNION ALL
+SELECT *
+FROM mar22;
+
+SELECT *
+FROM test_table;
+
+INSERT INTO total_year 
+SELECT *
+FROM test_table;
