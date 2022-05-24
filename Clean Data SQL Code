@@ -59,7 +59,7 @@ final_table AS
       starting_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
       starting_station_name <> 'Lyft Driver Center Private Rack' AND 
       starting_station_name <> '351'
-		  starting_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
+      starting_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
       starting_station_name <> 'Hubbard Bike-checking (LBS-WH-TEST)' AND 
       starting_station_name <> 'WEST CHI-WATSON'
       ending_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
