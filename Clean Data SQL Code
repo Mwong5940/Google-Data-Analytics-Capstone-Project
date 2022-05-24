@@ -1,0 +1,73 @@
+USE cyclistic;
+
+SELECT *
+FROM test_table
+
+update test_table 
+set start_station_name=NULL where start_station_name=''; 
+update test_table  
+set end_station_name=NULL where end_station_name='';
+
+WITH null_station_names AS
+(
+   SELECT ride_id AS bad_ride_id
+   FROM (SELECT ride_id, start_station_name, start_station_id, 
+            end_station_name, end_station_id
+         FROM test_table
+         WHERE rideable_type = 'docked_bike' OR rideable_type = 'classic_bike'
+         ) as bike_convert
+   WHERE start_station_name IS NULL OR
+      end_station_name IS NULL
+),
+null_station_names_cleaned AS
+(
+   SELECT *
+   FROM test_table tt
+   LEFT JOIN null_station_names nsn
+   ON tt.ride_id = nsn.bad_ride_id
+   WHERE nsn.bad_ride_id IS NULL AND
+      tt.start_lat IS NOT NULL AND
+      tt.start_lng IS NOT NULL AND
+      tt.end_lat IS NOT NULL AND
+      tt.end_lng IS NOT NULL
+),
+aggregated_total_year AS
+(
+   SELECT ride_id,
+      REPLACE(rideable_type, 'docked_bike', 'classic_bike') AS ride_type,
+      started_at,
+      ended_at,
+      TRIM(start_station_name) AS starting_station_name,
+      TRIM(end_station_name) AS ending_station_name,
+      DAYNAME(started_at) AS Day,
+      MONTHNAME(started_at) AS Month,
+      YEAR(started_at) AS Year,
+      TIMESTAMPDIFF(MINUTE,started_at, ended_at) as total_min,
+      start_lat,
+      start_lng,
+      end_lat,
+      end_lng,
+      member_casual AS member_type
+   FROM null_station_names_cleaned 
+),
+final_table AS
+(
+   SELECT *
+   FROM aggregated_total_year 
+   WHERE total_min > 1 AND
+      total_min < 1440 AND
+      starting_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
+      starting_station_name <> 'Lyft Driver Center Private Rack' AND 
+      starting_station_name <> '351'
+		  starting_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
+      starting_station_name <> 'Hubbard Bike-checking (LBS-WH-TEST)' AND 
+      starting_station_name <> 'WEST CHI-WATSON'
+      ending_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
+      ending_station_name <> 'Lyft Driver Center Private Rack' AND 
+      ending_station_name <> '351' 
+      ending_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
+      ending_station_name <> 'Hubbard Bike-checking (LBS-WH-TEST)' AND 
+      ending_station_name <> 'WEST CHI-WATSON'
+)
+SELECT *
+FROM final_table
