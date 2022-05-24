@@ -3,11 +3,15 @@ USE cyclistic;
 SELECT *
 FROM test_table
 
+-- Update total_year to replace blank cells with NULL
 update test_table 
 set start_station_name=NULL where start_station_name=''; 
 update test_table  
 set end_station_name=NULL where end_station_name='';
 
+/* Clean Data */
+
+-- Return classic and docked bike "ride_id" that have no start or end docking stations
 WITH null_station_names AS
 (
    SELECT ride_id AS bad_ride_id
@@ -19,6 +23,8 @@ WITH null_station_names AS
    WHERE start_station_name IS NULL OR
       end_station_name IS NULL
 ),
+
+-- Return trips that do not have any NULL values
 null_station_names_cleaned AS
 (
    SELECT *
@@ -31,6 +37,10 @@ null_station_names_cleaned AS
       tt.end_lat IS NOT NULL AND
       tt.end_lng IS NOT NULL
 ),
+
+-- Replace all instances of "docked_bike" with "classic_bike"; remove leading and trailing spaces in station names; 
+-- extract the day of the week, month, and year from "started_at";
+-- and return length of each trip in minutes by calculating the difference between "ended_at" and "started_at" with TIMESTAMPDIFF.
 aggregated_total_year AS
 (
    SELECT ride_id,
@@ -50,6 +60,8 @@ aggregated_total_year AS
       member_casual AS member_type
    FROM null_station_names_cleaned 
 ),
+
+-- Return all trips between 1 minute and 24 hours in length and remove any trips specified for maintenance and data testing.
 final_table AS
 (
    SELECT *
@@ -58,13 +70,13 @@ final_table AS
       total_min < 1440 AND
       starting_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
       starting_station_name <> 'Lyft Driver Center Private Rack' AND 
-      starting_station_name <> '351'
+      starting_station_name <> '351' AND 
       starting_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
       starting_station_name <> 'Hubbard Bike-checking (LBS-WH-TEST)' AND 
-      starting_station_name <> 'WEST CHI-WATSON'
+      starting_station_name <> 'WEST CHI-WATSON' AND 
       ending_station_name <> 'DIVVY CASSETTE REPAIR MOBILE STATION' AND
       ending_station_name <> 'Lyft Driver Center Private Rack' AND 
-      ending_station_name <> '351' 
+      ending_station_name <> '351' AND 
       ending_station_name <> 'Base - 2132 W Hubbard Warehouse' AND 
       ending_station_name <> 'Hubbard Bike-checking (LBS-WH-TEST)' AND 
       ending_station_name <> 'WEST CHI-WATSON'
